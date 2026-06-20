@@ -1,6 +1,11 @@
 # Project Zomboid dedicated server container
+
+## SOURCES
+
 The code my docker image and server are based upon is here: https://github.com/Danixu/project-zomboid-server-docker
 Please go give them some love!
+
+## ADDED FEATURES
 
 This Dockerfile downloads the Project Zombie dedicated server using SteamCMD. My image supports all original functions plus adds on some additional QOL features and fixes/refreshes some previously unimplemented features.
 I added the following features to this image:
@@ -11,6 +16,8 @@ I added the following features to this image:
   - I finished implementing and updated the PORT variables to reflect the standards Build 42 uses. This works by having the server host on the port it defaults to, then your compose file maps Project Zomboids default ports to the ports you specified on your router and firewall.
   - I added a variable for RCON_PORT with identical implementation as above.
   - I added fallback variables so any variable can remain unset.
+
+## Image Information
 
 > **WARNING:** This docker image essentially requires a docker-compose.yml to run and .env file to customize. It's possible to set it up without it, but I'd highly recommend against it.
 The ready to use image is available here:
@@ -25,20 +32,14 @@ https://hub.docker.com/r/aerialassault/pzserverdocker
 
 **WARNING:** Running the image on Windows using WSL2 in Docker Desktop will make the server startup times significantly slower. This is fine unless you are running alot of mods in which case server startup times may vary from 15 - 40 minutes. The best way to solve this problem is to run your container on a Linux based system or in a Linux VM.
 
-## Run time environment variables
+## Language Selection (Must be built using the source code in this server)
 
-This image uses some env variables as arguments in the server command, allowing to configure it. The image supports the following environment variables:
+  *Check https://lh.2xlibre.net/locales/ for up to date language codes. For **MORE** information about client translations, checkout https://github.com/TheIndieStone/ProjectZomboidTranslations.*
 
- Many options must appear in the exact format shown in options for guaranteed compatibility.
- 	***IF AN OPTION IS ITALICIZED, IT MEANS THAT VALUE IS THE HARDCODED DEFAULT WITHIN THE DOCKER-COMPOSE.YML***
+Changes language of system config before anything is installed. ***RAN AT BUILD TIME***
+**LANG:** Any Debian Trixie supported UTF-8 encoded language, *en_US.UTF-8*
 
-
-  **Check https://lh.2xlibre.net/locales/ for up to date language codes. For client translations, checkout https://github.com/TheIndieStone/ProjectZomboidTranslations.**
-
-Changes language of system config before anything is installed.
-LANG: *en_EN.UTF-8, Only support UTF-8 encodings; 
-
--------------------------------------------------------------------------------------------------
+** Runtime Variables
 Which branch from https://steamdb.info/app/380870/depots/ to download for your server.
 **STEAM_APP_BRANCH:** unstable, outdatedunstable, *public;*
 
@@ -144,136 +145,8 @@ Launches the server in debug mode.
 llows your server to be launched in CO_OP mode. Disabled the default admin.
 **CO_OP:**  True, *False*
 
-Performs a soft reset on your server. This does many things, for more information, please go **to:**
+Performs a soft reset on your server. This does many things as detailed below. Please use at your own disgression.
 **SOFT_RESET:**  True, *False*
-
-___________________________________________________________________________________________________
-Which branch from https://steamdb.info/app/380870/depots/ to download for your server.
-STEAM_APP_BRANCH: unstable, outdatedunstable, *public;
-
-Determines whether the game will boot from steam. If a player isn't using steam to connect, enable this here and in your client.
-NO_STEAM:  True, *False;
-
-Option to control where mods are loaded from and the order. Any of the 3 keywords may be left out and may appear in any order.
-MOD_FOLDERS:  *workshop,steam,mods (the default is loading from all locations in that order.)
-
-You can choose a different servername by using this option when starting the server.
-SERVER_NAME:  Any typical valid servername, *servertest
-
-If more than one file ending with _spawnpoints.lua exists within "./custom-settings" folder, specify file name of which one to load.
-CUSTOM_SPAWNPOINTS:  Any typical valid file name ending in _spawnpoints.lua, *N/A; loads in lexical order.
-
-If more than one file ending with _spawnregions.lua exists within "./custom-settings" folder, specify file name of which one to load.
-CUSTOM_SPAWNREGIONS:  Any typical valid file name ending in _spawnregions.lua, *N/A; loads in lexical order.
-
-If more than one file ending with _SandboxVars.lua exists within "./custom-settings" folder, specify file name of which one to load.
-CUSTOM_SANDBOXVARS:  Any typical valid file name ending in _SandboxVars.lua, *N/A; loads in lexical order.
-
-If more than one file ending with .ini exists within "./custom-settings" folder, specify file name of which one to load.
-CUSTOM_INI:  Any typical valid file name ending in .ini, *N/A; loads in lexical order.
-
-Specify which port is forwarded within router and firewall to host server to for UDP.
-DEFAULT_PORT:  Any UDP port that is unused and that you have forwarded., *16261
-
-Enable steam anti-cheat
-STEAM_VAC:  *True, False
-
-Changes the username for the admin profile within Project Zomboid
-ADMIN_USERNAME:  Any typical valid username, *admin
-
-Sets/Changes the admin password for the admin profile within Project Zomboid (PLEASE CHANGE THIS). Deletable after first run of new save.
-ADMIN_PASSWORD:  Any typical valid password, *PleaseChangeThis
-
-Changes where the server data is stored on local system. This directory MUST be empty and have standard permissions for the active user.
-HOST_DIR:  Any empty userspace directory, *./server (makes a new folder named "server" in the directory where the docker-compose.yml file is)
-
-Enables the use of custom init files, disables all preset related settings. Any unspecified files will be generated at runtime with the servers default files.
-ALT_LAUNCH:  True, *False
-
-Sets which mods to load and save from Steam Workshop at runtime. 
-WORKSHOP_IDS:  semi-colon separated list of Workshop IDs in load order. ie. "3423660713;3567084868;3406392630", *N/A (dont include quotations from example)
-
-Specify which port is forwarded within router and firewall to for steam to use for Steam's P2P relay.
-UDP_PORT:  Any UDP port that is unused and that you have forwarded., *16262
-
-Overridden by ALT_LAUNCH, sets default preset to use within save.
-SERVER_PRESET:  *apocalypse, beginner, builder, firstweek, sixmonthslater, survival, survivor.
-
-Overridden by ALT_LAUNCH, replaces the server preset by the one set by the SERVERPRESET variable. 
-SERVER_PRESET_REPLACE:  True, *False (defaults to false to avoid replacing once server starts)
-
-Turns off MOD_IDS and WORKSHOP_IDS options to allow you to externally manage your own mods, either through bind mounts or other means.
-SELF_MANAGED_MODS:  True, *False
-
-Similar to SERVER_PRESET_REPLACE, replaces the server custom settings with the ones specified by various "CUSTOM_" files above OR files in custom-settings by lexical order.
-REPLACE_CUSTOM:  True, *False
-
-Specify which port is forwarded within router and firewall to use RCON relay.
-RCON_PORT:  Any UDP port that is unused and that you have forwarded., *27015
-
-Sets/Changes the servers RCON password. (used to access server via consoles that aren't within the game or docker server.)
-RCON_PASSWORD:  Any typical valid password, *N/A (left unset due to the necessity of the password to be secure)
-
-Makes the server accessible via the in-game server browser. A good practice is ensure good security before enabling.
-PUBLIC:  True, *False
-
-Sets the password required to connect to your server. Optional.
-PASSWORD:  Any typical valid password, *N/A
-
- ***             Sets the path for the game data cache directory. An example would be home/zomboid/data/.             *** 
- ***                            It's crucial recommended to put this in persistant storage                            ***
- ***    (somewhere in home/steam/Zomboid, home/steam/pz-dedicated/steamapps/workshop, /home/steam/custom-settings)    ***
- ***                                          to avoid data loss, if changed                                          ***
-CACHE_DIR= Any valid userspace directory on the linux machine, *N/A
-
-Specifies: what local (non workshop) mods to be loaded. Must be placed manually in servers ~/Zomboid/mods/ folder to be detected and loaded.
-MOD_IDS:  Semicolon+backslashed list (eg. "3423660713;\3567084868;\3406392630"), *N/A
-
-Sets minimum amount of ram to initialize server with. Falls back to MEMORY if unset.
-MIN_MEMORY:  RAMSIZE_IN_NUMBERSm, e.g. 2048m, *N/A
-
-Sets maximum amount of ram that can be accessed if needed. Falls back to MEMORY if unset.
-MAX_MEMORY:  RAMSIZE_IN_NUMBERSm, e.g. 4096m, *N/A
-
-Sets total amount of ram used consistently by the server.
-MEMORY:  RAMSIZE_IN_NUMBERSm, e.g. 4096m, *2048m
-
-Allows you to use multiple network cards. Example: 127.0.0.1
-IP:  Any valid IP, *N/A
-
-Forces the server to update to the latest version.
-FORCE_UPDATE:  True, *False
-
-Forces the steam client to update to the latest version.
-FORCE_STEAM_CLIENT_UPDATE:  True, *False
-
-Sets or changes the display name in the in-game server browser.
-DISPLAY_NAME:  Any typical valid display name, *PZServer
-
-Launches the server in debug mode.
-DEBUG:  True, *False
-
-llows your server to be launched in CO_OP mode. Disabled the default admin.
-CO_OP:  True, *False
-
-Performs a soft reset on your server. This does many things, for more information, please see "SOFT RESET" below for more information.
-SOFT_RESET:  True, *False
-
-Mods will install on second server start
-
-Maps are added on third server start, after mods are added
-
-## Build time environment variables
-
-This env variables will be used at build time to generate the image.
-
-`STEAMAPPBRANCH:` Sets the Project Zomboid branch to download (e.g., `unstable`). If not set, the stable (public) branch will be downloaded. You can see a list of branches in the [SteamDB website](https://steamdb.info/app/108600/depots/).
-
-This will work only when using the `docker compose` command. If you are building the image using the `docker build` command, then must be passed as argument, for example:
-
-```bash
-docker build --compress --no-cache --build-arg STEAMAPPBRANCH=unstable .
-```
 
 ## Soft Reset
 
