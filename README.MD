@@ -30,10 +30,10 @@ https://hub.docker.com/r/aerialassault/pzserverdocker
 This image uses some env variables as arguments in the server command, allowing to configure it. The image supports the following environment variables:
 
  Many options must appear in the exact format shown in options for guaranteed compatibility.
- 	***IF AN OPTION HAS A STAR * NEXT TO IT, IT MEANS THAT VALUE IS THE HARDCODED DEFAULT.***
+ 	***IF AN OPTION IS ITALICIZED, IT MEANS THAT VALUE IS THE HARDCODED DEFAULT WITHIN THE DOCKER-COMPOSE.YML***
 
 
-  ***Check https://lh.2xlibre.net/locales/ for up to date language codes. For client translations, checkout https://github.com/TheIndieStone/ProjectZomboidTranslations.***
+  **Check https://lh.2xlibre.net/locales/ for up to date language codes. For client translations, checkout https://github.com/TheIndieStone/ProjectZomboidTranslations.**
 
 Changes language of system config before anything is installed.
 LANG: *en_EN.UTF-8, Only support UTF-8 encodings; 
