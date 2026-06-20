@@ -1,6 +1,16 @@
 # Project Zomboid dedicated server container
+The code my docker image and server are based upon is here: https://github.com/Danixu/project-zomboid-server-docker
+Please go give them some love!
 
-This Dockerfile downloads the Project Zombie dedicated server using SteamCMD. Will allow you to deploy with ease a server in Kubernetes, Docker...
+This Dockerfile downloads the Project Zombie dedicated server using SteamCMD. My image supports all original functions plus adds on some additional QOL features and fixes/refreshes some previously unimplemented features.
+I added the following features to this image:
+  - I added a DATA_DIR variable that specifies where on the machine Docker will store your servers data.
+  - I added an alternative launch which auto-loads custom SandboxVars.lua, spawnpoints.lua, spawnregions.lua, and .ini files from a user filled folder titled custom-settings. To use this, simply make a folder at your specified HOST_DIR (or within the same directory as your docker-compose.yml if unset), name said folder custom-settings, and place your files inside. (overrides PRESET options)
+  - I added CUSTOM_INI, CUSTOM_SANDBOXVARS, CUSTOM_SPAWNREGIONS, CUSTOM_INI variables, that way if multiple custom files of a type exist within custom-settings, you can specify the name of the file you want to use. Otherwise the first file of each type in lexical order will be loaded.
+  - I finished implementing the LANG variable so that it updates the locale during build time if given a valid UTF-8 language code. This will make your terminal permanently print with that locale as it traditionally would if it was set on a traditional linux.
+  - I finished implementing and updated the PORT variables to reflect the standards Build 42 uses. This works by having the server host on the port it defaults to, then your compose file maps Project Zomboids default ports to the ports you specified on your router and firewall.
+  - I added a variable for RCON_PORT with identical implementation as above.
+  -
 
 The ready to use image is available here:
 
