@@ -35,8 +35,8 @@ This image uses some env variables as arguments in the server command, allowing 
 
   **Check https://lh.2xlibre.net/locales/ for up to date language codes. For client translations, checkout https://github.com/TheIndieStone/ProjectZomboidTranslations.**
 
-Changes language of system config before anything is installed.
-LANG: *en_EN.UTF-8, Only support UTF-8 encodings; 
+Changes language of system config before anything is installed.<br>
+**LANG:** *en_EN.UTF-8, Only support UTF-8 encodings; 
 
 **WARNING:**Some options must appear in the exact format shown in options for guaranteed compatibility.
 
@@ -44,113 +44,113 @@ LANG: *en_EN.UTF-8, Only support UTF-8 encodings;
 
 ## ENVIRONMENTAL VARIABLES
 
-Which branch from https://steamdb.info/app/380870/depots/ to download for your server.
-\n**STEAM_APP_BRANCH:** unstable, outdatedunstable, *public;*
+Which branch from https://steamdb.info/app/380870/depots/ to download for your server.<br>
+**STEAM_APP_BRANCH:** unstable, outdatedunstable, *public;*
 
-Determines whether the game will boot from steam. If a player isn't using steam to connect, enable this here and in your client.
-\n**NO_STEAM:**  True, *False;*
+Determines whether the game will boot from steam. If a player isn't using steam to connect, enable this here and in your client.<br>
+**NO_STEAM:**  True, *False;*
 
-Option to control where mods are loaded from and the order. Any of the 3 keywords may be left out and may appear in any order.
-\n**MOD_FOLDERS:**  *workshop*,steam,mods (the default is loading from all locations in that order.)
+Option to control where mods are loaded from and the order. Any of the 3 keywords may be left out and may appear in any order.<br>
+**MOD_FOLDERS:**  *workshop*,steam,mods (the default is loading from all locations in that order.)
 
-You can choose a different servername by using this option when starting the server.
-\n**SERVER_NAME:**  Any typical valid servername, *servertest*
+You can choose a different servername by using this option when starting the server.<br>
+**SERVER_NAME:**  Any typical valid servername, *servertest*
 
-If more than one file ending with _spawnpoints.lua exists within "./custom-settings" folder, specify file name of which one to load.
-\n**CUSTOM_SPAWNPOINTS:**  Any typical valid file name ending in _spawnpoints.lua, *N/A*; loads in lexical order.
+If more than one file ending with _spawnpoints.lua exists within "./custom-settings" folder, specify file name of which one to load.<br>
+**CUSTOM_SPAWNPOINTS:**  Any typical valid file name ending in _spawnpoints.lua, *N/A*; loads in lexical order.
 
-If more than one file ending with _spawnregions.lua exists within "./custom-settings" folder, specify file name of which one to load.
-\n**CUSTOM_SPAWNREGIONS:**  Any typical valid file name ending in _spawnregions.lua, *N/A*; loads in lexical order.
+If more than one file ending with _spawnregions.lua exists within "./custom-settings" folder, specify file name of which one to load.<br>
+**CUSTOM_SPAWNREGIONS:**  Any typical valid file name ending in _spawnregions.lua, *N/A*; loads in lexical order.
 
-If more than one file ending with _SandboxVars.lua exists within "./custom-settings" folder, specify file name of which one to load.
-\n**CUSTOM_SANDBOXVARS:**  Any typical valid file name ending in _SandboxVars.lua, *N/A*; loads in lexical order.
+If more than one file ending with _SandboxVars.lua exists within "./custom-settings" folder, specify file name of which one to load.<br>
+**CUSTOM_SANDBOXVARS:**  Any typical valid file name ending in _SandboxVars.lua, *N/A*; loads in lexical order.
 
-If more than one file ending with .ini exists within "./custom-settings" folder, specify file name of which one to load.
-\n**CUSTOM_INI:**  Any typical valid file name ending in .ini, *N/A*; loads in lexical order.
+If more than one file ending with .ini exists within "./custom-settings" folder, specify file name of which one to load.<br>
+**CUSTOM_INI:**  Any typical valid file name ending in .ini, *N/A*; loads in lexical order.
 
-Specify which port is forwarded within router and firewall to host server to for UDP.
-\n**DEFAULT_PORT:**  Any UDP port that is unused and that you have forwarded., *16261*
+Specify which port is forwarded within router and firewall to host server to for UDP.<br>
+**DEFAULT_PORT:**  Any UDP port that is unused and that you have forwarded., *16261*
 
-Enable steam anti-cheat
-\n**STEAM_VAC:**  *True, False*
+Enable steam anti-cheat.<br>
+**STEAM_VAC:**  *True, False*
 
-Changes the username for the admin profile within Project Zomboid
-\n**ADMIN_USERNAME:**  Any typical valid username, *admin*
+Changes the username for the admin profile within Project Zomboid.<br>
+**ADMIN_USERNAME:**  Any typical valid username, *admin*
 
-Sets/Changes the admin password for the admin profile within Project Zomboid (PLEASE CHANGE THIS). Deletable after first run of new save.
-\n**ADMIN_PASSWORD:**  Any typical valid password, *PleaseChangeThis*
+Sets/Changes the admin password for the admin profile within Project Zomboid (PLEASE CHANGE THIS). Deletable after first run of new save.<br>
+**ADMIN_PASSWORD:**  Any typical valid password, *PleaseChangeThis*
 
-Changes where the server data is stored on local system. This directory MUST be empty and have standard permissions for the active user.
-\n**HOST_DIR:**  Any empty userspace directory, *./server (makes a new folder named "server" in the directory where the docker-compose.yml file is)*
+Changes where the server data is stored on local system. This directory MUST be empty and have standard permissions for the active user.<br>
+**HOST_DIR:**  Any empty userspace directory, *./server* ***(makes a new folder named "server" in the directory where the docker-compose.yml file is)***
 
-Enables the use of custom init files, disables all preset related settings. Any unspecified files will be generated at runtime with the servers default files.
-\n**ALT_LAUNCH:**  True, *False*
+Enables the use of custom init files, disables all preset related settings. Any unspecified files will be generated at runtime with the servers default files.<br>
+**ALT_LAUNCH:**  True, *False*
 
-Sets which mods to load and save from Steam Workshop at runtime. 
-\n**WORKSHOP_IDS:**  semi-colon separated list of Workshop IDs in load order. ie. "3423660713;3567084868;3406392630", *N/A (dont include quotations from example)*
+Sets which mods to load and save from Steam Workshop at runtime.<br>
+**WORKSHOP_IDS:**  semi-colon separated list of Workshop IDs in load order. ie. "3423660713;3567084868;3406392630", *N/A (dont include quotations from example)*
 
-Specify which port is forwarded within router and firewall to for steam to use for Steam's P2P relay.
-\n**UDP_PORT:**  Any UDP port that is unused and that you have forwarded., *16262*
+Specify which port is forwarded within router and firewall to for steam to use for Steam's P2P relay.<br>
+**UDP_PORT:**  Any UDP port that is unused and that you have forwarded., *16262*
 
-Overridden by ALT_LAUNCH, sets default preset to use within save.
-\n**SERVER_PRESET:**  *apocalypse, beginner, builder, firstweek, sixmonthslater, survival, survivor.*
+Overridden by ALT_LAUNCH, sets default preset to use within save.<br>
+**SERVER_PRESET:**  *apocalypse, beginner, builder, firstweek, sixmonthslater, survival, survivor.*
 
-Overridden by ALT_LAUNCH, replaces the server preset by the one set by the SERVERPRESET variable. 
-\n**SERVER_PRESET_REPLACE:**  True, *False (defaults to false to avoid replacing once server starts)*
+Overridden by ALT_LAUNCH, replaces the server preset by the one set by the SERVERPRESET variable. <br>
+**SERVER_PRESET_REPLACE:**  True, *False (defaults to false to avoid replacing once server starts)*
 
-Turns off MOD_IDS and WORKSHOP_IDS options to allow you to externally manage your own mods, either through bind mounts or other means.
-\n**SELF_MANAGED_MODS:**  True, *False*
+Turns off MOD_IDS and WORKSHOP_IDS options to allow you to externally manage your own mods, either through bind mounts or other means.<br>
+**SELF_MANAGED_MODS:**  True, *False*
 
-Similar to SERVER_PRESET_REPLACE, replaces the server custom settings with the ones specified by various "CUSTOM_" files above OR files in custom-settings by lexical order.
-\n**REPLACE_CUSTOM:**  True, *False*
+Similar to SERVER_PRESET_REPLACE, replaces the server custom settings with the ones specified by various "CUSTOM_" files above OR files in custom-settings by lexical order.<br>
+**REPLACE_CUSTOM:**  True, *False*
 
-Specify which port is forwarded within router and firewall to use RCON relay.
-\n**RCON_PORT:**  Any UDP port that is unused and that you have forwarded., *27015*
+Specify which port is forwarded within router and firewall to use RCON relay.<br>
+**RCON_PORT:**  Any UDP port that is unused and that you have forwarded., *27015*
 
-Sets/Changes the servers RCON password. (used to access server via consoles that aren't within the game or docker server.)
-\n**RCON_PASSWORD:**  Any typical valid password, *N/A (left unset due to the necessity of the password to be secure)*
+Sets/Changes the servers RCON password. (used to access server via consoles that aren't within the game or docker server.)<br>
+**RCON_PASSWORD:**  Any typical valid password, *N/A (left unset due to the necessity of the password to be secure)*
 
-Makes the server accessible via the in-game server browser. A good practice is ensure good security before enabling.
-\n**PUBLIC:**  True, *False*
+Makes the server accessible via the in-game server browser. A good practice is ensure good security before enabling.<br>
+**PUBLIC:**  True, *False*
 
-Sets the password required to connect to your server. Optional.
-\n**PASSWORD:**  Any typical valid password, *N/A*
+Sets the password required to connect to your server. Optional.<br>
+**PASSWORD:**  Any typical valid password, *N/A*
 
-Sets the path for the game data cache directory. An example would be home/zomboid/data/. It's crucial recommended to put this in persistant storage (somewhere in home/steam/Zomboid, home/steam/pz-dedicated/steamapps/workshop, /home/steam/custom-settings) to avoid data loss, if changed
-\n**CACHE_DIR:** Any valid userspace directory on the linux machine, *N/A*
+Sets the path for the game data cache directory. An example would be home/zomboid/data/. It's crucial recommended to put this in persistant storage (somewhere in home/steam/Zomboid, home/steam/pz-dedicated/steamapps/workshop, /home/steam/custom-settings) to avoid data loss, if changed<br>
+**CACHE_DIR:** Any valid userspace directory on the linux machine, *N/A*
 
-Specifies what local (non workshop) mods to be loaded. Must be placed manually in servers ~/Zomboid/mods/ folder to be detected and loaded.
-\n**MOD_IDS:**  Semicolon+backslashed list (eg. "3423660713;\3567084868;\3406392630"), *N/A*
+Specifies what local (non workshop) mods to be loaded. Must be placed manually in servers ~/Zomboid/mods/ folder to be detected and loaded.<br>
+**MOD_IDS:**  Semicolon+backslashed list (eg. "3423660713;\3567084868;\3406392630"), *N/A*
 
-Sets minimum amount of ram to initialize server with. Falls back to MEMORY if unset.
-\n**MIN_MEMORY:**  RAMSIZE_IN_NUMBERSm, e.g. 2048m, *N/A*
+Sets minimum amount of ram to initialize server with. Falls back to MEMORY if unset.<br>
+**MIN_MEMORY:**  RAMSIZE_IN_NUMBERSm, e.g. 2048m, *N/A*
 
-Sets maximum amount of ram that can be accessed if needed. Falls back to MEMORY if unset.
-\n**MAX_MEMORY:**  RAMSIZE_IN_NUMBERSm, e.g. 4096m, *N/A*
+Sets maximum amount of ram that can be accessed if needed. Falls back to MEMORY if unset.<br>
+**MAX_MEMORY:**  RAMSIZE_IN_NUMBERSm, e.g. 4096m, *N/A*
 
-Sets total amount of ram used consistently by the server.
-\n**MEMORY:**  RAMSIZE_IN_NUMBERSm, e.g. 4096m, *2048m*
+Sets total amount of ram used consistently by the server.<br>
+**MEMORY:**  RAMSIZE_IN_NUMBERSm, e.g. 4096m, *2048m*
 
-Allows you to use multiple network cards. **Example:** 127.0.0.1
-\n**IP:**  Any valid IP, *N/A*
+Allows you to use multiple network cards. **Example:** 127.0.0.1<br>
+**IP:**  Any valid IP, *N/A*
 
-Forces the server to update to the latest version.
-\n**FORCE_UPDATE:**  True, *False*
+Forces the server to update to the latest version.<br>
+**FORCE_UPDATE:**  True, *False*
 
-Forces the steam client to update to the latest version.
-\n**FORCE_STEAM_CLIENT_UPDATE:**  True, *False*
+Forces the steam client to update to the latest version.<br>
+**FORCE_STEAM_CLIENT_UPDATE:**  True, *False*
 
-Sets or changes the display name in the in-game server browser.
-\n**DISPLAY_NAME:**  Any typical valid display name, *PZServer*
+Sets or changes the display name in the in-game server browser.<br>
+**DISPLAY_NAME:**  Any typical valid display name, *PZServer*
 
-Launches the server in debug mode.
-\n**DEBUG:**  True, *False*
+Launches the server in debug mode.<br>
+**DEBUG:**  True, *False*
 
-Allows your server to be launched in CO_OP mode. Disabled the default admin.
-\n**CO_OP:**  True, *False*
+Allows your server to be launched in CO_OP mode. Disabled the default admin.<br>
+**CO_OP:**  True, *False*
 
-Performs a soft reset on your server. This does many things as detailed below. Use at your own disgression.
-\n**SOFT_RESET:**  True, *False*
+Performs a soft reset on your server. This does many things as detailed below. Use at your own disgression.<br>
+**SOFT_RESET:**  True, *False*
 
 ## Soft Reset
 
